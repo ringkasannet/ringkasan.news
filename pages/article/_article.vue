@@ -116,7 +116,7 @@
       <h2>Update Kronologis</h2>
     </div>
       <!-- Container elements -->
-      <div class="article-container" v-if="!ringkasanEdit">
+      <div class="article-container">
         <div
           class="updates-container"
           v-for="(update, index) in article.updates"
