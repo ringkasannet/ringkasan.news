@@ -138,7 +138,7 @@
 
             <button
               v-if="index != readMoreIndex"
-              v-on:click="readMore(update, index)"
+              v-on:click="readMore(index,update)"
               class="button-link"
             >
               <h5>Read More</h5>
@@ -364,7 +364,7 @@ export default {
       return d;
     },
 
-    async readMore(u, i) {
+    async readMore(i,u) {
       this.$nuxt.$loading.start();
 
       const update = this.fromObserver(u);
@@ -407,6 +407,7 @@ export default {
             { merge: true }
           );
           this.editedIndex = null;
+          this.readMore(i,u)
 
           this.$nuxt.$loading.finish();
         } catch (error) {
@@ -560,6 +561,7 @@ html {
 
 p {
   font-size: 100%;
+  line-height:1.5;
 }
 
 *:focus {
@@ -574,6 +576,7 @@ p {
 
 h4 {
   color: rgb(32, 12, 0);
+    line-height:1.5;
 }
 
 h2 {
@@ -605,6 +608,8 @@ h5 {
 .ringkasan-item /deep/ li {
   margin: 0.7em 0;
   font-weight: normal;
+    line-height:1.5;
+
 }
 
 .ringkasan-item /deep/ ul {
