@@ -68,7 +68,7 @@
       <button v-on:click="saveRingkasan" class="main-button">
         <h4 class="main-button">Save</h4>
       </button>
-      <button v-on:click="cancelAdding" class="main-button">
+      <button v-on:click="cancelRingkasan" class="main-button">
         <h4 class="main-button">Cancel</h4>
       </button>
     </div>
@@ -486,6 +486,13 @@ export default {
       this.textBuffer = this.article.ringkasan;
       this.imageBuffer = this.article.image;
     },
+        cancelRingkasan() {
+      this.ringkasanEdit = false;
+      this.titleBuffer = "";
+      this.textBuffer = "";
+      this.imageBuffer = "";
+    },
+
     async saveRingkasan() {
       if (window.confirm("Are you sure you want to modify ringkasan?")) {
         const doc_ref = this.$fire.firestore
