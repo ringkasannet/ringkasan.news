@@ -216,7 +216,7 @@ h4 {
 }
 
 .active {
-  background-color: rgb(255, 248, 248);
+  background-color: rgb(245, 225, 225);
   border: solid rgb(255, 235, 235) 2px;
   box-shadow: 10px 5px 20px lightgrey;
 }
