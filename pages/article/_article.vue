@@ -110,11 +110,10 @@
         </div>
       </div>
     </div>
-    <div class="outer-box" >
-    <div style="margin: 2em 0 1em 0; text-align: center;">
-
-      <h2>Update Kronologis</h2>
-    </div>
+    <div class="outer-box">
+      <div style="margin: 2em 0 1em 0; text-align: center">
+        <h2>Update Kronologis</h2>
+      </div>
       <!-- Container elements -->
       <div class="article-container">
         <div
@@ -138,7 +137,7 @@
 
             <button
               v-if="index != readMoreIndex"
-              v-on:click="readMore(index,update)"
+              v-on:click="readMore(index, update)"
               class="button-link"
             >
               <h5>Read More</h5>
@@ -311,9 +310,9 @@ export default {
               querySnapshot.forEach((doc) => {
                 let d = {};
                 d = doc.data();
+                console.log(d.text)
                 d.id = doc.ref.id;
                 d.ref = doc.ref;
-                d.nama = "evan";
                 this.article.updates.push(d);
                 this.$nuxt.$loading.finish();
               });
@@ -364,7 +363,7 @@ export default {
       return d;
     },
 
-    async readMore(i,u) {
+    async readMore(i, u) {
       this.$nuxt.$loading.start();
 
       const update = this.fromObserver(u);
@@ -407,7 +406,7 @@ export default {
             { merge: true }
           );
           this.editedIndex = null;
-          this.readMore(i,u)
+          this.readMore(i, u);
 
           this.$nuxt.$loading.finish();
         } catch (error) {
@@ -487,7 +486,7 @@ export default {
       this.textBuffer = this.article.ringkasan;
       this.imageBuffer = this.article.image;
     },
-        cancelRingkasan() {
+    cancelRingkasan() {
       this.ringkasanEdit = false;
       this.titleBuffer = "";
       this.textBuffer = "";
@@ -561,7 +560,7 @@ html {
 
 p {
   font-size: 100%;
-  line-height:1.5;
+  line-height: 1.5;
 }
 
 *:focus {
@@ -576,7 +575,7 @@ p {
 
 h4 {
   color: rgb(32, 12, 0);
-    line-height:1.5;
+  line-height: 1.5;
 }
 
 h2 {
@@ -590,6 +589,7 @@ h3.ringkasan {
   border: none;
   font-size: 150%;
   font-weight: normal;
+  color: rgb(255, 255, 255);
 }
 
 h5 {
@@ -608,12 +608,24 @@ h5 {
 .ringkasan-item /deep/ li {
   margin: 0.7em 0;
   font-weight: normal;
-    line-height:1.5;
-
+  line-height: 1.5;
 }
 
 .ringkasan-item /deep/ ul {
   padding: 0 2em;
+}
+
+.ringkasan-item /deep/ ul {
+  list-style: none;
+}
+
+.ringkasan-item /deep/ ul li::before {
+  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: red; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */ 
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
 }
 
 .ringkasan-item /deep/ img {
@@ -638,17 +650,16 @@ h5 {
 
 .updates-container {
   padding: 1em;
-  margin:0;
+  margin: 0;
   /* padding: 0.5em 0 1em 0; */
   border-top: dotted 0.5px rgb(253, 219, 219);
   display: block;
-
 }
 
 .update-container {
   display: block;
   padding: 0.5em;
-  margin:0;
+  margin: 0;
 }
 
 .update-time {
@@ -728,11 +739,6 @@ h1.judul {
   color: rgb(255, 255, 255);
 }
 
-h3.ringkasan {
-  /* font-weight: bold; */
-  color: rgb(255, 255, 255);
-}
-
 .read-more-container {
   align-items: center;
   border-top: 2px rgb(248, 210, 210) solid;
@@ -749,9 +755,8 @@ h3.ringkasan {
 }
 
 .read-more-container /deep/ iframe {
- width:100%;
- display:block;
-
+  width: 100%;
+  display: block;
 }
 
 .active {
@@ -774,11 +779,11 @@ textarea {
     Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-.outer-box{
-  margin:1.5em 0;
+.outer-box {
+  margin: 1.5em 0;
   padding: 0.05em 0 0 0;
   /* border: solid rgb(248, 213, 213) 0.1px;  */
-  box-shadow: 10px 5px 20px lightgrey
+  box-shadow: 10px 5px 20px lightgrey;
 }
 </style>
 

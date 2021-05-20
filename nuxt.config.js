@@ -42,7 +42,8 @@ export default {
     '~/plugins/quill.client.js',
     {src:'~/plugins/ctkpicker.client.js',mode:'client'},
     '~/plugins/checkAuth.js',
-    '~/plugins/vueimageupload.client.js'
+    '~/plugins/vueimageupload.client.js',
+    '~plugins/ringkasan.js'
 
   ],
 

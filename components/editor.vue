@@ -41,12 +41,14 @@ export default {
     return {
       content: "<p>example content</p>",
       editorOption: { theme: "snow" },
-      text: this.textProp,
     };
   },
   mounted() {
-    console.log("this is current quill instance object", this.myQuillEditor);
-    console.log(this.text);
+  },
+  computed:{
+    text(){
+      return this.textProp
+    }
   },
   methods: {
     onEditorChange(event) {
