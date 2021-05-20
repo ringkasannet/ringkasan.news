@@ -7,23 +7,11 @@
         </NuxtLink>
       </div>
       <div class="default-layout-menus">
-        <div class="default-layout-menu">
-          <NuxtLink to="/">Home</NuxtLink>
-        </div>
         <div v-if="!authorized" class="default-layout-menu">
           <NuxtLink to="/adminLogin">Login</NuxtLink>
         </div>
         <div v-if="authorized" class="default-layout-menu">
           <NuxtLink to="/logout">Logout</NuxtLink>
-        </div>
-        <div class="default-layout-menu">
-          <NuxtLink
-            :to="{
-              name: 'article-article',
-              params: { article: 'kpk-ujian-kebangsaan' },
-            }"
-            >Article</NuxtLink
-          >
         </div>
       </div>
     </div>
