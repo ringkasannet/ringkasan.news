@@ -8,7 +8,7 @@
 <style scoped>
 .outer-container {
   flex-direction: row;
-  background-color: #410a0a;
+  background-color: #f1f1f1;
   /* max-width: 200px; */
   justify-content: flex-start;
   border-radius: 30px;
@@ -20,11 +20,12 @@
   vertical-align: middle;
   display: flex;
   align-items: center;
-  color: white;
+  color: #410a0a;
+  font-weight: bold;
   padding: 0 1em;
 }
 .blob {
-  background: white;
+  background: #410a0a;
   border-radius: 50%;
   margin: 10px;
   height: 10px;
@@ -37,17 +38,17 @@
 @keyframes pulse {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 0 0 rgba(170, 80, 80, 0.7);
   }
 
   70% {
     transform: scale(1);
-    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    box-shadow: 0 0 0 10px rgba(170, 80, 80, 0);
   }
 
   100% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    box-shadow: 0 0 0 0 rgba(170, 80, 80,0);
   }
 }
 </style>
