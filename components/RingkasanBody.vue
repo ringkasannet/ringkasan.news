@@ -221,6 +221,15 @@ h4 {
   color: #410a0a;
   font-weight: bold;
 }
+
+.read-more-container /deep/ img{
+    width:100%;
+}
+
+.read-more-container /deep/ iframe{
+    width:100%;
+    height:20vh;
+}
 button.add-update {
   width: 100%;
   padding: 0.5em;
