@@ -24,6 +24,7 @@
       :id="update.id"
       v-bind:class="{ active: activeIndex == update.id }"
       v-on:focus="updateFocus(update)"
+      v-on:focus.prevent.stop
       tabindex="100"
     >
       <div v-if="update.id != editedIndex">
@@ -65,7 +66,9 @@
           </button>
         </div>
 
-        <p v-if="authorized" class="small-italic add-top-margin">Id: {{ update.id }}</p>
+        <p v-if="authorized" class="small-italic add-top-margin">
+          Id: {{ update.id }}
+        </p>
       </div>
 
       <!-- Updates editing -->
@@ -87,14 +90,14 @@ export default {
       editedIndex: null,
       authorized: true,
       addingUpdate: false,
-      parentRef:""
+      parentRef: "",
     };
   },
   async mounted() {
-    console.log(this.slug)
+    console.log(this.slug);
     this.$ringkasan.getUpdatesRealtime(this.slug, this.updatesUpdated, this);
-    this.parentRef= await this.$ringkasan.getArticleRef(this.slug)
-    console.log(this.parentRef)
+    this.parentRef = await this.$ringkasan.getArticleRef(this.slug);
+    console.log(this.parentRef);
     if (this.$fire.auth.currentUser) {
       this.authorized = true;
     } else {
@@ -107,8 +110,8 @@ export default {
       this.authorized = au;
     },
     updatesUpdated(incomingData) {
-        console.log(incomingData)
-        console.log("incoming")
+      console.log(incomingData);
+      console.log("incoming");
       this.updates = incomingData.updates;
       console.log(this.$ringkasan.getObjFromObserver(incomingData));
     },
@@ -122,6 +125,7 @@ export default {
     updateFocus(u) {
       this.activeIndex = u.id;
       console.log(u);
+      this.readMoreIndex=u.id
     },
     editUpdate(u) {
       this.editedIndex = u.id;
@@ -145,7 +149,7 @@ export default {
     addUpdate() {
       this.addingUpdate = true;
       this.activeIndex = null;
-      console.log(this.parentRef)
+      console.log(this.parentRef);
     },
     addingClosed() {
       this.addingUpdate = false;
@@ -222,13 +226,13 @@ h4 {
   font-weight: bold;
 }
 
-.read-more-container /deep/ img{
-    width:100%;
+.read-more-container /deep/ img {
+  width: 100%;
 }
 
-.read-more-container /deep/ iframe{
-    width:100%;
-    height:20vh;
+.read-more-container /deep/ iframe {
+  width: 100%;
+  height: 20vh;
 }
 button.add-update {
   width: 100%;
