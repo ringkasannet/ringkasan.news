@@ -65,7 +65,7 @@
           </button>
         </div>
 
-        <p class="small-italic add-top-margin">Id: {{ update.id }}</p>
+        <p v-if="authorized" class="small-italic add-top-margin">Id: {{ update.id }}</p>
       </div>
 
       <!-- Updates editing -->
